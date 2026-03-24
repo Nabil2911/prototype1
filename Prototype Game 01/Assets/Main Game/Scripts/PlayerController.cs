@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        isGround = Physics2D.OverlapCapsule(groundPoint.position, new Vector2(1, 0.1f),
+        isGround = Physics2D.OverlapCapsule(groundPoint.position, new Vector2(0.5f, 0.1f),
         CapsuleDirection2D.Horizontal, 0, groundLayer);
 
         MovementLogic();
