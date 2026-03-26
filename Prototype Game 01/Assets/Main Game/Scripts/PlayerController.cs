@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private PlayerHealth playerHealth;
 
     [Header("Setting")]
     [SerializeField] private float moveSpeed = 5;
@@ -17,12 +18,15 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
-        isGround = Physics2D.OverlapCapsule(groundPoint.position, new Vector2(0.5f, 0.1f),
+        isGround = Physics2D.OverlapCapsule(groundPoint.position, new Vector2(0.8f, 0.1f),
         CapsuleDirection2D.Horizontal, 0, groundLayer);
+
+        if (playerHealth.isHit) return;
 
         MovementLogic();
         JumpLogic();
